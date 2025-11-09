@@ -211,7 +211,7 @@ export default function UploadPage() {
             className="bg-white rounded-lg shadow-md p-4 flex flex-col items-center border hover:shadow-lg transition"
           >
             <iframe
-              src={pdf.previewUrl ?? `/api/auth/pdf/${pdf._id}`}
+              src={pdf.previewUrl ?? `/api/auth/pdf/${pdf._id}#toolbar=0`}
               className="w-full h-64 rounded-md border mb-3"
               title={pdf.title}
             />

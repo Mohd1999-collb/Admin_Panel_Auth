@@ -1,6 +1,7 @@
 import mongoose, { Schema, Document } from "mongoose";
 
 export interface IPdfFile extends Document {
+  title: string;
   filename: string;
   data: Buffer;
   contentType: string;
@@ -8,10 +9,12 @@ export interface IPdfFile extends Document {
 }
 
 const PdfSchema = new Schema<IPdfFile>({
+  title: { type: String, required: true },
   filename: { type: String, required: true },
   data: { type: Buffer, required: true },
   contentType: { type: String, required: true },
   uploadedAt: { type: Date, default: Date.now },
 });
 
-export default mongoose.models.PdfFile || mongoose.model<IPdfFile>("PdfFile", PdfSchema);
+export default mongoose.models.PdfFile ||
+  mongoose.model<IPdfFile>("PdfFile", PdfSchema);

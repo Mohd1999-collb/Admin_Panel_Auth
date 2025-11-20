@@ -192,7 +192,10 @@ export default function UploadPage() {
 
       {/* File Preview */}
       {previewUrl && (
-        <div className="w-full flex justify-center mb-10">
+        <div
+          className="w-full flex justify-center mb-10"
+          onClick={() => setPreviewUrl(null)} // Close on outside click
+        >
           <iframe
             src={previewUrl}
             className="w-[80%] h-[500px] rounded-lg border shadow-lg"
@@ -261,7 +264,7 @@ export default function UploadPage() {
       </div>
 
       {/* Fullscreen PDF Modal */}
-      {viewPdf && (
+      {/* {viewPdf && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
           <div className="bg-white w-[95%] h-[95%] p-4 rounded-lg shadow-lg relative">
             <button
@@ -270,6 +273,31 @@ export default function UploadPage() {
             >
               ✕
             </button>
+            <iframe
+              src={viewPdf}
+              className="w-full h-full rounded-md"
+              title="PDF Viewer"
+            />
+          </div>
+        </div>
+      )} */}
+
+      {viewPdf && (
+        <div
+          className="fixed inset-0 bg-black/60 flex items-center justify-center z-50"
+          onClick={() => setViewPdf(null)} // Close on outside click
+        >
+          <div
+            className="bg-white w-[95%] h-[95%] p-4 rounded-lg shadow-lg relative"
+            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
+          >
+            <button
+              onClick={() => setViewPdf(null)}
+              className="absolute top-3 right-3 bg-red-500 text-white px-3 py-1 rounded cursor-pointer"
+            >
+              ✕
+            </button>
+
             <iframe
               src={viewPdf}
               className="w-full h-full rounded-md"

@@ -5,10 +5,10 @@ import { usePathname } from "next/navigation";
 import { FaRegCalendarAlt, FaBlog, FaNewspaper, FaPhotoVideo } from "react-icons/fa";
 
 const links = [
-  { href: "/dashboard/event", label: "Event", icon: <FaRegCalendarAlt /> },
-  { href: "/dashboard/blog", label: "Blog", icon: <FaBlog /> },
-  { href: "/dashboard/news", label: "News", icon: <FaNewspaper /> },
-  { href: "/dashboard/gallery", label: "Gallery", icon: <FaPhotoVideo /> },
+  { href: "/dashboard/event", label: "Apt. Frorm", icon: <FaRegCalendarAlt /> },
+  { href: "/dashboard/blog", label: "Pdf ", icon: <FaBlog /> },
+  { href: "/dashboard/news", label: "Payment Gateway", icon: <FaNewspaper /> },
+  { href: "/dashboard/gallery", label: "Update Password", icon: <FaPhotoVideo /> },
 ];
 
 export default function Sidebar() {

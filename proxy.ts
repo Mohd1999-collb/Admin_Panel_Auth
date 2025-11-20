@@ -9,9 +9,6 @@
 // //   if (!token || !secret) {
 // //     return NextResponse.redirect(new URL("/auth/signin", req.url));
 // //   }
-
-
-
 // //   try {
 // //     // Verify JWT (Edge-compatible)
 // //     await jwtVerify(token, new TextEncoder().encode(secret));

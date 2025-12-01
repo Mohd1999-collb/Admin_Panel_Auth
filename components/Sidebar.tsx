@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FaRegCalendarAlt, FaBlog, FaNewspaper, FaPhotoVideo } from "react-icons/fa";
+import { FaRegCalendarAlt, FaBlog, FaNewspaper, FaPhotoVideo, FaAmazon } from "react-icons/fa";
 
 const links = [
   { href: "/dashboard/event", label: "Apt. Frorm", icon: <FaRegCalendarAlt /> },
   { href: "/dashboard/blog", label: "Pdf ", icon: <FaBlog /> },
   { href: "/dashboard/news", label: "Payment Gateway", icon: <FaNewspaper /> },
   { href: "/dashboard/gallery", label: "Update Password", icon: <FaPhotoVideo /> },
+  { href: "/dashboard/country", label: "Country", icon: <FaAmazon /> },
 ];
 
 export default function Sidebar() {

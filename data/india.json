@@ -1,0 +1,28 @@
+{
+  "India": {
+    "states": [
+      {
+        "name": "Maharashtra",
+        "districts": [
+          {
+            "name": "Pune",
+            "cities": ["Pune City", "Hinjewadi", "Baner"]
+          },
+          {
+            "name": "Mumbai",
+            "cities": ["Andheri", "Bandra", "Dadar"]
+          }
+        ]
+      },
+      {
+        "name": "Uttar Pradesh",
+        "districts": [
+          {
+            "name": "Lucknow",
+            "cities": ["Lucknow City", "Gomti Nagar"]
+          }
+        ]
+      }
+    ]
+  }
+}

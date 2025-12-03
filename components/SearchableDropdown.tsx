@@ -1,116 +1,66 @@
 "use client";
+import { useState, useEffect, useRef } from "react";
 
-import { useState } from "react";
-import indiaData from "@/data/india.json";
+export default function SearchableDropdown({
+  label,
+  options = [],
+  value,
+  onSelect,
+}: any) {
+  const [search, setSearch] = useState("");
+  const [open, setOpen] = useState(false);
+  const ref = useRef<any>(null);
 
-export default function LocationSelector() {
-  const [country] = useState("India");
+  // Close dropdown when click outside
+  useEffect(() => {
+    const handleClick = (e: any) => {
+      if (ref.current && !ref.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
 
-  const [searchState, setSearchState] = useState("");
-  const [showSuggestions, setShowSuggestions] = useState(false);
-
-  const [selectedState, setSelectedState] = useState<any>(null);
-  const [selectedDistrict, setSelectedDistrict] = useState<any>(null);
-  const [selectedCity, setSelectedCity] = useState("");
-
-  const data = indiaData as Record<string, any>;
-  const states = data[country].states;
-
-  const filteredStates = states.filter((st: any) =>
-    st.name.toLowerCase().includes(searchState.toLowerCase())
+  const filtered = options.filter((item: any) =>
+    item.name.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
-    <div className="max-w-xl mx-auto p-6 space-y-6">
-      {/* STATE SEARCH INPUT */}
-      <div className="relative">
-        <label className="font-semibold">Search State</label>
-        <input
-          type="text"
-          className="w-full p-2 border rounded"
-          placeholder="Type 'Maha' → suggestions appear"
-          value={searchState}
-          onChange={(e) => {
-            setSearchState(e.target.value);
-            setShowSuggestions(true);
-          }}
-        />
+    <div ref={ref} className="relative w-full">
+      <label className="font-semibold">{label}</label>
 
-        {/* AUTO-SUGGESTIONS */}
-        {showSuggestions && searchState.length > 0 && (
-          <ul className="absolute left-0 right-0 bg-white border rounded shadow-lg max-h-60 overflow-auto z-10">
-            {filteredStates.length === 0 && (
-              <li className="p-2 text-gray-500">No State Found</li>
-            )}
+      <input
+        type="text"
+        placeholder={`Search ${label}...`}
+        value={value?.name || search}
+        onChange={(e) => {
+          setSearch(e.target.value);
+          setOpen(true);
+        }}
+        onClick={() => setOpen(!open)}
+        className="w-full p-3 border rounded mt-1"
+      />
 
-            {filteredStates.map((st: any) => (
-              <li
-                key={st.name}
-                onClick={() => {
-                  setSelectedState(st);
-                  setSelectedDistrict(null);
-                  setSelectedCity("");
-                  setSearchState(st.name);
-                  setShowSuggestions(false);
-                }}
-                className="p-2 hover:bg-gray-100 cursor-pointer"
-              >
-                {st.name}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-
-      {/* DISTRICT DROPDOWN */}
-      {selectedState && (
-        <div>
-          <label className="font-semibold">District</label>
-          <select
-            className="w-full p-2 border rounded"
-            onChange={(e) => {
-              const distObj = selectedState.districts.find(
-                (d: any) => d.name === e.target.value
-              );
-              setSelectedDistrict(distObj);
-              setSelectedCity("");
-            }}
-          >
-            <option value="">Select District</option>
-            {selectedState.districts.map((d: any) => (
-              <option key={d.name} value={d.name}>
-                {d.name}
-              </option>
-            ))}
-          </select>
-        </div>
-      )}
-
-      {/* CITY DROPDOWN */}
-      {selectedDistrict && (
-        <div>
-          <label className="font-semibold">City</label>
-          <select
-            className="w-full p-2 border rounded"
-            onChange={(e) => setSelectedCity(e.target.value)}
-          >
-            <option value="">Select City</option>
-            {selectedDistrict.cities.map((c: string) => (
-              <option key={c} value={c}>
-                {c}
-              </option>
-            ))}
-          </select>
-        </div>
-      )}
-
-      {/* SHOW FINAL OUTPUT */}
-      {selectedState && selectedDistrict && selectedCity && (
-        <div className="p-4 border rounded bg-green-50 font-semibold">
-          <p>State: {selectedState.name}</p>
-          <p>District: {selectedDistrict.name}</p>
-          <p>City: {selectedCity}</p>
-        </div>
+      {open && (
+        <ul className="absolute z-20 w-full bg-white border rounded mt-1 max-h-60 overflow-y-auto shadow">
+          {filtered.length === 0 && (
+            <li className="p-2 text-gray-500">No results</li>
+          )}
+          {filtered.map((item: any) => (
+            <li
+              key={item.id}
+              className="p-2 cursor-pointer hover:bg-gray-100"
+              onClick={() => {
+                onSelect(item);
+                setOpen(false);
+                setSearch("");
+              }}
+            >
+              {item.name}
+            </li>
+          ))}
+        </ul>
       )}
     </div>
   );

@@ -10,6 +10,7 @@ const links = [
   { href: "/dashboard/news", label: "Payment Gateway", icon: <FaNewspaper /> },
   { href: "/dashboard/gallery", label: "Update Password", icon: <FaPhotoVideo /> },
   { href: "/dashboard/country", label: "Country", icon: <FaAmazon /> },
+  { href: "/dashboard/crone", label: "Crone Job", icon: <FaAmazon /> },
 ];
 
 export default function Sidebar() {

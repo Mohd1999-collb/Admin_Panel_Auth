@@ -20,7 +20,6 @@ export async function proxy(req: NextRequest) {
       // No token → redirect to signup
       return NextResponse.redirect(new URL("/auth/signup", req.url));
     }
-
     try {
       await jwtVerify(token, new TextEncoder().encode(secret));
       // Token valid → redirect to dashboard
@@ -37,7 +36,6 @@ export async function proxy(req: NextRequest) {
     if (!token) {
       return NextResponse.redirect(new URL("/auth/signin", req.url));
     }
-
     try {
       await jwtVerify(token, new TextEncoder().encode(secret));
       return NextResponse.next();
@@ -66,7 +64,7 @@ export async function proxy(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/dashboard/:path*", "/api/auth/:path*"],
+  matcher: ["/", "/dashboard/:path*"],
 };
 
 

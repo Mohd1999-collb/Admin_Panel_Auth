@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import dbConnect from "@/lib/dbConnect";
 
 export async function GET(req: Request, context: { params: Promise<{ id: string }> }) {
-  const { id } = await context.params; // ✅ await params before using
+  const { id } = await context.params; 
   await dbConnect();
 
   if (!mongoose.Types.ObjectId.isValid(id)) {

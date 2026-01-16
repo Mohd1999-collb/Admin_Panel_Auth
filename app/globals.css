@@ -1,1 +1,24 @@
 @import "tailwindcss";
+
+.input {
+  @apply border p-2 rounded w-full;
+}
+
+.jodit-wysiwyg ul {
+  list-style: disc !important;
+  padding-left: 40px !important;
+}
+
+.jodit-wysiwyg ol {
+  list-style: decimal !important;
+  padding-left: 40px !important;
+}
+
+.jodit-wysiwyg h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.jodit-wysiwyg h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}

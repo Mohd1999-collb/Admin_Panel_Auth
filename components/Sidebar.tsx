@@ -11,6 +11,7 @@ const links = [
   { href: "/dashboard/gallery", label: "Update Password", icon: <FaPhotoVideo /> },
   { href: "/dashboard/country", label: "Country", icon: <FaAmazon /> },
   { href: "/dashboard/crone", label: "Crone Job", icon: <FaAmazon /> },
+  { href: "/dashboard/rich-text-editor", label: "Rich Text Editor", icon: <FaAmazon /> },
 ];
 
 export default function Sidebar() {

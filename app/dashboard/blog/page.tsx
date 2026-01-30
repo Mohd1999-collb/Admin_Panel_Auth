@@ -198,7 +198,7 @@ export default function UploadPage() {
         >
           <iframe
             src={previewUrl}
-            className="w-[80%] h-[500px] rounded-lg border shadow-lg"
+            className="w-[80%] h-125 rounded-lg border shadow-lg"
             title="PDF Preview"
           ></iframe>
         </div>

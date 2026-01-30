@@ -4,11 +4,9 @@ export default function CronStatusCard() {
       <h2 className="text-xl font-semibold text-gray-800">
         Daily Cron Job
       </h2>
-
       <p className="mt-2 text-sm text-gray-600">
         Runs automatically every day at 12:00 AM
       </p>
-
       <div className="mt-4 flex items-center justify-between">
         <span className="rounded-full bg-green-100 px-3 py-1 text-sm text-green-700">
           Active

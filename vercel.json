@@ -1,7 +1,7 @@
 {
   "crons": [
     {
-      "path": "/api/auth/cron/daily-task",
+      "path": "/api/auth/cron",
       "schedule": "15 17 * * *"
     }
   ]

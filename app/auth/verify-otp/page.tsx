@@ -1,9 +1,9 @@
 "use client";
 
 import { useSearchParams, useRouter } from "next/navigation";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 
-export default function VerifyOtpPage() {
+export function VerifyOtp() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const email = searchParams.get("email");
@@ -45,3 +45,19 @@ export default function VerifyOtpPage() {
     </div>
   );
 }
+
+export default function VerifyOtpPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex justify-center items-center min-h-screen">
+          <p className="text-lg">Loading...</p>
+        </div>
+      }
+    >
+      <VerifyOtp />
+    </Suspense>
+  );
+}
+
+

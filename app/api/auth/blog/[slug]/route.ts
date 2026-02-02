@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import Blog from "@/models/Blog";
 import dbConnect from "@/lib/dbConnect";
 
-/* GET BLOG BY SLUG (Frontend Blog Page) */
 export async function GET(
   req: Request, context: { params: Promise<{ slug: string }> }
 ) {

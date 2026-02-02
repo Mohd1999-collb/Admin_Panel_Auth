@@ -1,9 +1,7 @@
 import { NextResponse } from "next/server";
-
 import Blog from "@/models/Blog";
 import dbConnect from "@/lib/dbConnect";
 
-/* CREATE BLOG */
 export async function POST(req: Request) {
   try {
     await dbConnect();

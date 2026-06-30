@@ -8,6 +8,8 @@ export default function HomePage() {
 
   // useEffect(() => {
   //   // Redirect to signin page by default
+  //   // Redirect to signin page by default
+  //   // Redirect to signin page by default
   //   router.push("/auth/signup");
   // }, [router]);
 
